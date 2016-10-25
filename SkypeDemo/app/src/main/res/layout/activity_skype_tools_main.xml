@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.james.skypetools.SkypeToolsMain">
+
+    <EditText
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/username"
+        android:text="enter a username"/>
+
+
+
+    <Button
+        android:layout_below="@id/username"
+        android:id="@+id/skypeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Call"
+
+        />
+
+    <Button
+        android:layout_below="@id/skypeButton"
+        android:id="@+id/checkSkypeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check Skype"
+
+        />
+
+    <Button
+        android:layout_below="@id/checkSkypeButton"
+        android:id="@+id/goToMarketButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Market"
+
+        />
+
+    <TextView
+        android:layout_below="@id/goToMarketButton"
+        android:id="@+id/installed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="false"
+        android:visibility="invisible"
+
+        />
+
+
+</RelativeLayout>
+
