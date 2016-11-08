@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_hearing_tool"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="northseattlecollege.ASLBuddy.HearingTool">
+
+
+    <include layout="@layout/content_hearing_tool" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/voiceButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:layout_margin="15dp"
+        android:src="@drawable/abc_ic_voice_search_api_mtrl_alpha"
+        android:baselineAlignBottom="false"
+        android:contentDescription="Voice talk button"/>
+
+    <Button
+        android:text="Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_alignRight="@+id/label_hearing_tool"
+        android:layout_alignEnd="@+id/label_hearing_tool"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/back" />
+
+</android.support.design.widget.CoordinatorLayout>
