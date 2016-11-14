@@ -2,32 +2,26 @@
 ###Main Windows
 
 ####Signup/Login Page
-- [x] Allow users to sign in with Email account and password, or create an ASL Buddy account with Email and password, then proceed to Main Page.
-- [ ] Query the database and match the hashed password and salt function with the client-side input.  New hash password and salt function when signing up.
+- [ ] Allow users to sign in with Microsoft account, or create a Microsoft account, then proceed to Main Page.
 
 ####Main Page (Hard of Hearing)
-- [x] Has 3 buttons (Hearing Tool, Video, Physical)
-- [x] Clicking video button takes the user to CreateRequest page, passing video param
-- [x] Clicking physical button takes users to CreateRequest page, passing physical as param
-- [x] Clicking Hearing Tool button takes user to the Hearing tool chat window
+- [ ] Has 3 buttons (NLP, Video, Physical)
+- [ ] Clicking video button starts a video request and takes users to request page
+- [ ] Clicking physical button takes users to physical request page
+- [ ] Clicking NLP button takes user to the NLP chat window
 
 ####Main Page (Interpreter)
-- [x] Has 2 check boxes with buttons
-- [x] Video button toggles the indicator for video interpretation
-- [x] Physical button toggles the indicator for physical interpretation
+- [ ] Has 2 check boxes with buttons
+- [ ] Video button toggles the indicator for video interpretation
+- [ ] Physical button toggles the indicator for physical interpretation
 - [ ] When video indicator is on, then interpreter user will be available to HOH users for video
 - [ ] When video indicator is off, then interpreter user will **not** be available to HOH users for video
 - [ ] When physical indicator is off, then interpreter user will be available to HOH users for physical interpretation
 - [ ] When physical indicator is off, then interpreter user will **not** be available to HOH users for physical interpretation
 - [ ] If user closes app. The indicators are still respected, and they be available based on indicators.
-- [ ] Skype status is displayed, whether or not this interpreter has linked their Skype account with their ASL buddy account.
 
-####Hearing Tool chat page will support Google Voice TTS, keyboard, and scrolling conversation history
-- [x] Will support recording Audio through device's recorder.
-- [x] Will translate that recorded audio into text using the Google API.
-- [x] Will accept typed responses from the HOH user to communicate back.
-- [x] Will speak the typed responses from HOH user through the device's speakers.
-- [x] Will support scrolling conversation history.
+####NLP chat page will support Google Voice TTS, keyboard, and scrolling conversation history
+- [ ] ???
 
 ####Create Requests Page - where Hard of Hearing make request
 - [ ] Page shows if HOH users is creating a video or physical request
@@ -36,27 +30,26 @@
 - [ ] Has detail text to put more info about the request (150 char max)
 - [ ] Has a request now button
 - [ ] Error state fragment in case there are no interpreters found
-- [ ] On the error state fragment there are three buttons: Change Range (if video), Try Video Chat (if location), and try Hearing Tool
+- [ ] On the error state fragment there are three buttons: Change Range (if video), Try Video Chat (if location), and try NLP
 - [ ] Clicking on the Change range button goes to Create Request view for physical with the range text box selected
 - [ ] Clicking on the Video button takes the user to Create Request view for video
-- [ ] Clicking on the Hearing Tool button takes the user to the Hearing Tool chat page
-- [ ] Success state fragment that indicates an interpreter is on the way.
-- [ ] Skype status is displayed, whether or not this interpreter has linked their Skype account with their ASL buddy account.
+- [ ] Clicking on the NLP button takes the user to the NLP chat page
+- [ ] Success state fragment that indicates an interpreter is on the way
 
 ####Settings Page
 - [ ] Setting page can be accessed from any page.
 - [ ] Setting will have a personal photo of the interrupter and the user.
 - [ ] Next the photo the settings will have the user first and last name.
-- [ ] profile setting allow to update personal photo and name of user.
-- [ ] Do not disturb setting and Push notifications.
-- [ ] Location enabled.
-- [ ] Acceptable radius.
-- [ ] Minimum rating.
-- [ ] Auto timeout.
-- [ ] Configure Skype from settings page by verifying they have Skype installed, verifying they are signed into Skype, and storing their Skype username.
-- [ ] Change theme (use default vs custom settings)
+- [ ] rofile setting allow to update personal photo and name of user.
+- [ ]	Do not disturb setting and Push notifications.
+- [ ]	Advanced setting
+- [ ]	Location enabled.
+- [ ]	Acceptable radios.
+- [ ]	Minimum rating.
+- [ ]	 Auto timeout.
+- [ ]	Change theme (use default vs custom settings)
 - [ ]	Captions > language , text size , white/black
-- [ ]	About > app version, send feedback, help(Q&A) and developer info
+- [ ]	About > app version, send feedback, help(Q&A) and developer info 
 
 ####View Request Page - This is for translators.
 - [ ] Clicking location or physical notification takes user to this page
@@ -77,7 +70,7 @@
 
 ####Request for translation notification
 - [ ] notification has icon for app
-- [ ] When translator gets a physical or video request, then they get this request notification
+- [ ] When translator gets a physical or video request, then they get this request notification 
 - [ ] Notification has short text that tells translator they have a pending request.
 - [ ] Clicking notification starts app and takes translator to View Request page for the request.
 

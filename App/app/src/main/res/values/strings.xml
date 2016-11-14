@@ -120,4 +120,6 @@
     <string name="label_submit">Submit</string>
     <string name="label_create_physical_request">Create Physical request</string>
     <string name="label_create_video_request">Create Video request</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDdpX-ncWDYGfZkGauZi0-_TgFv1V8w8ww</string>
 </resources>
+

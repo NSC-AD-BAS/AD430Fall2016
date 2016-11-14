@@ -70,7 +70,7 @@ public class MenuHOH extends AppCompatActivity {
     private void requestVideo() {
         finish();
         Intent navigationIntent = new Intent(MenuHOH.this, CreateRequest.class);
-        navigationIntent.putExtra(CreateRequest.REQUEST_TYPE, CreateRequest.REQUEST_TYPE_VIDEO);
+
         MenuHOH.this.startActivity(navigationIntent);
     }
 
@@ -81,7 +81,7 @@ public class MenuHOH extends AppCompatActivity {
     private void requestPhysical() {
         finish();
         Intent navigationIntent = new Intent(MenuHOH.this, CreateRequest.class);
-        navigationIntent.putExtra(CreateRequest.REQUEST_TYPE, CreateRequest.REQUEST_TYPE_PHYSICAL);
+
         MenuHOH.this.startActivity(navigationIntent);
     }
 
