@@ -15,24 +15,32 @@
         android:text="Cancel Request"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="63dp"
         android:id="@+id/Cancel"
         tools:text="Cancel Request"
-        android:onClick="showNotification"/>
+        android:onClick="showNotification"
+        android:layout_marginBottom="11dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/buddyasl"
+        android:id="@+id/ASLBLogo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="Finding Interpreter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
         android:id="@+id/FindInterp"
         tools:text="Finding Interpreter"
         android:textSize="20sp"
         android:textStyle="normal|bold"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp" />
 
     <TextView
         android:text="Please Do Not Close The App"
@@ -40,18 +48,7 @@
         android:id="@+id/Please"
         tools:text="Please do not close the app"
         android:layout_width="200dp"
-        android:layout_above="@+id/Cancel"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="23dp" />
 
-    <ImageView
-        android:layout_width="400dp"
-        android:layout_height="200dp"
-        app:srcCompat="@drawable/buddyasl"
-        android:id="@+id/imageView4"
         android:layout_below="@+id/FindInterp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="28dp" />
-
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
