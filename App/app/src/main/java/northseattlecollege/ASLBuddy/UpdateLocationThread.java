@@ -28,7 +28,6 @@ public class UpdateLocationThread extends Thread{
             try {
                 //code here for the actual database update
                 ((MenuInterpreter)menuInterpreter).sendLocationToServer();
-                System.out.println("test");
                 Thread.sleep(360 * 1000);
             } catch (Exception e) {
                 e.printStackTrace();
