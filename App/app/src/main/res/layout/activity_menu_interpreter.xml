@@ -9,105 +9,117 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="northseattlecollege.ASLBuddy.MenuInterpreter">
+    tools:context="northseattlecollege.ASLBuddy.MenuInterpreter"
+    android:screenOrientation="portrait">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="1"
-        android:layout_below="@+id/pageCaption"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <Switch
-            android:text="Video"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/videoSwitch"
-            android:textSize="24sp" />
-
-        <Switch
-            android:text="Location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/locationSwitch"
-            android:textSize="24sp" />
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
             <TextView
-                android:text="Skype Status:"
-                android:layout_width="wrap_content"
+                android:text="I'm available to translate for:\n"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/skypeStatusCaption"
-                android:layout_weight="1"
-                android:textSize="24sp" />
+                android:id="@+id/pageCaption"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
-            <TextView
-                android:text="Online"
-                android:layout_height="wrap_content"
-                android:id="@+id/skypeStatus"
-                android:layout_weight="1"
-                android:textSize="24sp"
-                android:textColor="@android:color/holo_green_dark"
-                android:textAlignment="textEnd"
-                android:layout_width="wrap_content" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="1"
+                android:layout_below="@+id/pageCaption"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
+
+                <Switch
+                    android:text="Video"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/videoSwitch"
+                    android:textSize="24sp" />
+
+                <Switch
+                    android:text="Location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/locationSwitch"
+                    android:textSize="24sp" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="Skype Status:"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/skypeStatusCaption"
+                        android:layout_weight="1"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:text="Online"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/skypeStatus"
+                        android:layout_weight="1"
+                        android:textSize="24sp"
+                        android:textColor="@android:color/holo_green_dark"
+                        android:textAlignment="textEnd"
+                        android:layout_width="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="Skype Name:"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/skypeNameCaption"
+                        android:layout_weight="1"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:text=""
+                        android:layout_height="wrap_content"
+                        android:id="@+id/skypeName"
+                        android:layout_weight="1"
+                        android:textSize="24sp"
+                        android:textAlignment="textEnd"
+                        android:layout_width="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/logout_button"
+                style="?android:textAppearanceMedium"
+                android:layout_below="@+id/physical_interpreter_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="60dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:text="@string/action_logout"
+                android:textStyle="bold"
+                android:background="#ff6e66" />
 
         </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:text="Skype Name:"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/skypeNameCaption"
-                android:layout_weight="1"
-                android:textSize="24sp" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:text="unknown"
-                android:id="@+id/skypeName"
-                android:layout_weight="1"
-                android:textSize="24sp"
-                android:textAlignment="textEnd"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <TextView
-        android:text="I'm available to translate for:\n"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/pageCaption"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:id="@+id/logout_button"
-        style="?android:textAppearanceMedium"
-        android:layout_below="@+id/physical_interpreter_button"
-        android:layout_width="220dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="60dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:text="@string/action_logout"
-        android:textStyle="bold"
-        android:background="#ff6e66" />
+    </ScrollView>
 
 </RelativeLayout>

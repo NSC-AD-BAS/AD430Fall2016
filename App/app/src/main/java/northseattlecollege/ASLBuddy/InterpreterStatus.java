@@ -14,29 +14,30 @@ import java.net.URL;
 
 public class InterpreterStatus {
     int userId;
-    public InterpreterStatus(int userId){
+
+    public InterpreterStatus(int userId) {
         //figuring out who is currently logged in
         //pass in the userid as a parameter of the constructor
         this.userId = userId;
     }
 
     //send video status to the server
-    public void setVideoStatus(boolean videoTrue){
+    public void setVideoStatus(boolean videoTrue) {
         //call api here
         final boolean vid = videoTrue;
         try {
             //call API to update the video status here, if true set true else false
             URL url = new URL("http://54.69.18.19:8081/setVideoStatus?userId=" +
                     userId + "&status=" + (vid ? 1 : 0));
-            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = connection.getInputStream();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     //method that sets the video
-    public boolean getVideoStatus(){
+    public boolean getVideoStatus() {
         ObjectMapper mapper = new ObjectMapper();
         boolean status = false;
         try {
@@ -45,7 +46,7 @@ public class InterpreterStatus {
                     userId), JsonObj.class);
             //set status here from object
             status = obj.getOk_to_chat();
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
         //return the result from the query (video status)
@@ -53,15 +54,15 @@ public class InterpreterStatus {
     }
 
     //method that sends the location status to the server
-    public void setLocationStatus(boolean locationTrue){
+    public void setLocationStatus(boolean locationTrue) {
         //call api here
         final boolean loc = locationTrue;
-        try{
+        try {
             URL url = new URL("http://54.69.18.19/setLocationStatus?userId=" +
                     userId + "&status=" + (loc ? 1 : 0));
-            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = connection.getInputStream();
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
@@ -82,21 +83,17 @@ public class InterpreterStatus {
     }
 
     //method that sends the skype user name to the server
-    public void setSkypeName(String skypeName){
+    public void setSkypeName(String skypeName) {
         //call api here
 
 
-
-
-        try{
-            URL url = new URL("http://54.69.18.19/setSkypeName?userId=1&skypeName="+ skypeName);
-            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+        try {
+            URL url = new URL("http://54.69.18.19/setSkypeName?userId=" + userId + "&skypeName=" + skypeName);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = connection.getInputStream();
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
-
-
 
 
     }
@@ -120,18 +117,16 @@ public class InterpreterStatus {
         return name;
 
 
-
-
     }
 
-    public void setInterpreterLocation(double lat, double lng){
+    public void setInterpreterLocation(double lat, double lng) {
         try {
             //call API to update the video status here, if true set true else false
             URL url = new URL("http://54.69.18.19/updateUserLocation?userId=" + userId + "&userLocLat=" +
                     lat + "&userLocLong=+" + lng);
-            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = connection.getInputStream();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
