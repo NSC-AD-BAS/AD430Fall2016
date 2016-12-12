@@ -36,8 +36,8 @@ public class LocationService {
         locationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setSmallestDisplacement(0) //displacement in meters
-                .setInterval(TimeUnit.SECONDS.toMillis(10))        // 5 mins, in milliseconds
-                .setFastestInterval(TimeUnit.SECONDS.toMillis(10)); // 5 mins, in milliseconds
+                .setInterval(TimeUnit.MINUTES.toMillis(5))        // 5 mins, in milliseconds
+                .setFastestInterval(TimeUnit.MINUTES.toMillis(5)); // 5 mins, in milliseconds
         mGoogleApiClient.connect();
     }
 
