@@ -104,9 +104,7 @@ public class MenuInterpreter extends AppCompatActivity implements CompoundButton
     }
 
     public void setupUpdateLocationThread(boolean status){
-        if(updateLocationThread != null){
-            updateLocationThread.kill();
-        }
+        killThread();
         updateLocationThread = new UpdateLocationThread(status, this);
         updateLocationThread.start();
     }
@@ -190,10 +188,16 @@ public class MenuInterpreter extends AppCompatActivity implements CompoundButton
      */
     private void logout() {
         finish();
+        killThread();
         Intent navigationIntent = new Intent(MenuInterpreter.this, LoginActivity.class);
         MenuInterpreter.this.startActivity(navigationIntent);
     }
 
+    private void killThread(){
+        if(updateLocationThread != null){
+            updateLocationThread.kill();
+        }
+    }
     private class RefreshSkypeStatus extends AsyncTask<Void, Void, Boolean> {
         protected Boolean doInBackground(Void... asdf) {
 
