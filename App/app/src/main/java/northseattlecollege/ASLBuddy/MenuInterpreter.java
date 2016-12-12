@@ -7,9 +7,12 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,17 +22,26 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+
 /**
  * Author: Nathan Flint
  * Created 10/10/2016
  */
 
-public class MenuInterpreter extends AppCompatActivity implements MenuInterpreterViewable {
+public class MenuInterpreter extends AppCompatActivity implements
+        MenuInterpreterViewable,
+        GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener {
     private Switch videoSwitch, locationSwitch;
     private TextView skypeStatus;
     private TextView skypeName;
     private int userId;
     private MenuInterpreterViewModel viewModel;
+    private LocationService locationService;
+    private boolean isLocationServiceConnected;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,12 +97,17 @@ public class MenuInterpreter extends AppCompatActivity implements MenuInterprete
                 logout();
             }
         });
+
+        createViewModel();
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        createViewModel();
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i("Interpreter activity", "Destroyed!");
+
+        if(locationService != null)
+            locationService.stopLocationUpdates();
     }
 
     @Override
@@ -147,6 +164,10 @@ public class MenuInterpreter extends AppCompatActivity implements MenuInterprete
                 MenuInterpreter.this.viewModel = new MenuInterpreterViewModel(
                         MenuInterpreter.this,
                         MenuInterpreter.this.userId);
+                locationService = new LocationService(getAppContext(),
+                        viewModel,
+                        MenuInterpreter.this,
+                        MenuInterpreter.this);
                 onViewModelUpdated();
             }
         });
@@ -212,7 +233,15 @@ public class MenuInterpreter extends AppCompatActivity implements MenuInterprete
             public void run() {
                 videoSwitch.setChecked(viewModel.isVideoStatusEnabled());
                 videoSwitch.setEnabled(viewModel.isSkypeProperlyConfigured());
-                locationSwitch.setChecked(viewModel.isLocationStatusEnabled());
+
+                boolean isLocationStatusEnabled = viewModel.isLocationStatusEnabled();
+                locationSwitch.setChecked(isLocationStatusEnabled);
+
+                if (isLocationStatusEnabled && isLocationServiceConnected)
+                    locationService.startLocationUpdates();
+
+                if (!isLocationStatusEnabled && isLocationServiceConnected)
+                    locationService.stopLocationUpdates();
 
                 boolean hasSkypeName = viewModel.hasSkypeName();
                 String nameText = hasSkypeName ? viewModel.getSkypeName() : "Not Set";
@@ -233,6 +262,22 @@ public class MenuInterpreter extends AppCompatActivity implements MenuInterprete
     @Override
     public Context getAppContext() {
         return getApplicationContext();
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+        isLocationServiceConnected = true;
+        onViewModelUpdated();
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
     }
 }
 

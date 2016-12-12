@@ -18,38 +18,28 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by nathanflint on 11/7/16.
  */
-public class LocationService implements GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener {
+public class LocationService {
     private GoogleApiClient mGoogleApiClient;
     private LocationListener locationListener;
     private LocationRequest locationRequest;
 
-    public LocationService(Context mainActivity, LocationListener locationListener) {
+    public LocationService(Context mainActivity,
+                           LocationListener locationListener,
+                           GoogleApiClient.ConnectionCallbacks connectionCallbacks,
+                           GoogleApiClient.OnConnectionFailedListener onConnectionFailedListener) {
         mGoogleApiClient = new GoogleApiClient.Builder(mainActivity)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
+                .addConnectionCallbacks(connectionCallbacks)
+                .addOnConnectionFailedListener(onConnectionFailedListener)
                 .addApi(LocationServices.API)
                 .build();
         this.locationListener = locationListener;
         locationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setSmallestDisplacement(0) //displacement in meters
-                .setInterval(TimeUnit.MINUTES.toMillis(5))        // 5 mins, in milliseconds
-                .setFastestInterval(TimeUnit.MINUTES.toMillis(5)); // 5 mins, in milliseconds
+                .setInterval(TimeUnit.SECONDS.toMillis(10))        // 5 mins, in milliseconds
+                .setFastestInterval(TimeUnit.SECONDS.toMillis(10)); // 5 mins, in milliseconds
         mGoogleApiClient.connect();
     }
-
-    @Override
-    public void onConnected(@Nullable Bundle bundle) {
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-
-    }
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {}
 
     public void stopLocationUpdates() {
         LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, locationListener);
@@ -61,5 +51,10 @@ public class LocationService implements GoogleApiClient.ConnectionCallbacks,
         } catch (SecurityException e){
             e.printStackTrace();
         }
+    }
+
+    public void destroy() {
+        stopLocationUpdates();
+        mGoogleApiClient.disconnect();
     }
 }

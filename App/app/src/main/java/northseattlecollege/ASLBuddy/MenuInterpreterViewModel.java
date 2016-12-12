@@ -18,35 +18,17 @@ public class MenuInterpreterViewModel implements LocationListener {
     private String skypeName;
     private boolean isVideoStatusEnabled;
     private boolean isLocationStatusEnabled;
-    private LocationService locationService;
 
     public MenuInterpreterViewModel(MenuInterpreterViewable viewable, int userId) {
         this.viewable = viewable;
         status = new InterpreterStatus(userId);
-        locationService = new LocationService(viewable.getAppContext(), this);
 
         skypeName = status.getSkypeName();
         if (!isSkypeProperlyConfigured())
             status.setVideoStatus(false);
 
         isLocationStatusEnabled = status.getLocationStatus();
-        if(isLocationStatusEnabled)
-            startLocationUpdates();
-
         isVideoStatusEnabled = status.getVideoStatus();
-    }
-
-    private void startLocationUpdates() {
-        Context appContext = viewable.getAppContext();
-        Handler mainHandler = new Handler(appContext.getMainLooper());
-
-        Runnable myRunnable = new Runnable() {
-            @Override
-            public void run() {
-                locationService.startLocationUpdates();
-            }
-        };
-        mainHandler.post(myRunnable);
     }
 
     public void setSkypeName(String name) {
@@ -84,12 +66,6 @@ public class MenuInterpreterViewModel implements LocationListener {
     public void setLocationStatus(boolean isLocationEnabled) {
         status.setLocationStatus(isLocationEnabled);
         isLocationStatusEnabled = isLocationEnabled;
-
-        if (isLocationEnabled)
-            startLocationUpdates();
-        else
-            locationService.stopLocationUpdates();
-
         viewable.onViewModelUpdated();
     }
 
