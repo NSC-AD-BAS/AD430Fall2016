@@ -42,6 +42,10 @@ public class CreateRequest extends AppCompatActivity
 
     public final static String REQUEST_RADIUS = "northseattlecollege.ASLBuddy.REQUEST_RADIUS";
 
+    /**
+     * WHAT DOES THIS DO?
+     * @param error
+     */
     public static void setError(boolean error) {
         mIsError = error;
     }
@@ -114,8 +118,8 @@ public class CreateRequest extends AppCompatActivity
 
         if (mRequestType.compareTo(REQUEST_TYPE_PHYSICAL) == 0) {
             // ToDo: how are physical requests handled?
-            navigationIntent.putExtra(CreateRequest.REQUEST_TYPE, CreateRequest.REQUEST_TYPE_PHYSICAL);
-            navigationIntent.putExtra(CreateRequest.REQUEST_RADIUS, radius);
+            navigationIntent.putExtra(REQUEST_TYPE, CreateRequest.REQUEST_TYPE_PHYSICAL);
+            navigationIntent.putExtra(REQUEST_RADIUS, radius);
         } else {
             navigationIntent.putExtra(CreateRequest.REQUEST_TYPE, CreateRequest.REQUEST_TYPE_VIDEO);
         }
