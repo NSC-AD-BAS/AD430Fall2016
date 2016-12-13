@@ -3,6 +3,7 @@ package northseattlecollege.ASLBuddy;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -263,7 +264,7 @@ public class HearingTool extends AppCompatActivity implements TextToSpeech.OnIni
                     final TextView userMessage = createNewTextView(message, false);
                     layout.addView(userMessage);
                     userMessage.startAnimation(AnimationUtils.loadAnimation(HearingTool.this,
-                            android.R.anim.slide_in_left));
+                            android.R.anim.fade_in));
 
                     recordButton.setVisibility(View.VISIBLE);
                     typeButton.setText("Type");
@@ -324,16 +325,18 @@ public class HearingTool extends AppCompatActivity implements TextToSpeech.OnIni
         TextView sentMessage = new TextView(this);
         params = getTextViewParams(isOtherPerson, false);
         sentMessage.setLayoutParams(params);
-        sentMessage.setTextColor(getResources().getColor(R.color.hearing_tool_text));
-        sentMessage.setBackgroundColor(getResources().getColor(R.color.hearing_tool_messageBackground));
-        sentMessage.setPadding(10, 10, 10, 10);
 
-        // set the correct message label
+        // set the correct color and message label
         if (isOtherPerson) {
-            sentMessage.setText(OTHER_LABEL + ":    " + message);
+            sentMessage.setBackgroundResource(R.drawable.hearing_tool_message_other);
+            sentMessage.setTextColor(Color.BLACK);
+            sentMessage.setText(OTHER_LABEL + ":  " + message);
         } else {
-            sentMessage.setText(USER_LABEL + ":    " + message);
+            sentMessage.setBackgroundResource(R.drawable.hearing_tool_message_me);
+            sentMessage.setTextColor(Color.WHITE);
+            sentMessage.setText(USER_LABEL + ":  " + message);
         }
+        sentMessage.setPadding(15, 15, 15, 15);
         sentStringMessages.add(message);
         sentMessages.add(sentMessage);
 
@@ -359,6 +362,8 @@ public class HearingTool extends AppCompatActivity implements TextToSpeech.OnIni
         if (isEditText) {
             params.width = layout.getWidth() - typeButton.getWidth() - 10;
             params.gravity = Gravity.BOTTOM;
+        } else {
+            params.setMargins(10, 10, 10, 10);
         }
         return params;
     }
