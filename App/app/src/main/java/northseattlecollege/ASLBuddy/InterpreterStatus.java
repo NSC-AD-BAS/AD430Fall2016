@@ -27,7 +27,7 @@ public class InterpreterStatus {
         final boolean vid = videoTrue;
         try {
             //call API to update the video status here, if true set true else false
-            URL url = new URL("http://54.69.18.19:8081/setVideoStatus?userId=" +
+            URL url = new URL("http://54.69.18.19/setVideoStatus?userId=" +
                     userId + "&status=" + (vid ? 1 : 0));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = connection.getInputStream();
