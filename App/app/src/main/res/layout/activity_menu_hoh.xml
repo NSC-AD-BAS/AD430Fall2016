@@ -69,10 +69,8 @@
     <Button
         android:id="@+id/logout_button"
         style="?android:textAppearanceMedium"
-        android:layout_below="@+id/physical_interpreter_button"
         android:layout_width="220dp"
         android:layout_height="40dp"
-        android:layout_marginTop="60dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:text="@string/action_logout"
