@@ -1,5 +1,7 @@
 package northseattlecollege.ASLBuddy;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,6 +26,8 @@ import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import northseattlecollege.ASLBuddy.fragments.SkypeUsernameHelpFragment;
 
 /**
  * Author: Nathan Flint
@@ -95,6 +99,19 @@ public class MenuInterpreter extends AppCompatActivity implements
             @Override
             public void onClick(View view) {
                 logout();
+            }
+        });
+
+        //Skype username help button handler
+        Button help = (Button) findViewById(R.id.help);
+        assert help != null;
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(android.R.id.content, new SkypeUsernameHelpFragment());
+                fragmentTransaction.commit();
             }
         });
 

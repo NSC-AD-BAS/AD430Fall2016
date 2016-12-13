@@ -102,6 +102,15 @@
                         android:textAlignment="textEnd"
                         android:layout_width="wrap_content" />
 
+                    <Button
+                        android:id="@+id/help"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/next"
+                        android:layout_centerHorizontal="true"
+                        android:text="Help"
+                        android:background="#ff6e66" />
+
                 </LinearLayout>
 
             </LinearLayout>
